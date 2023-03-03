@@ -19,7 +19,7 @@ export default function AddTaskModal({ showAddTaskModal, setShowAddTaskModal }) 
       const realTime = Date.now() + 1000 * 60 * task.taskTime;
       task.realTime = realTime;
       // create a task
-      const res = await axios.post(`${serverUrl}/api/tasks`, {
+      await axios.post(`${serverUrl}/api/tasks`, {
         data: task,
       });
       formRef.current.reset();
@@ -30,7 +30,7 @@ export default function AddTaskModal({ showAddTaskModal, setShowAddTaskModal }) 
       alert(err.message);
     }
   };
-  
+
   const handleChange = (e) => {
     setTask((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
